@@ -26,7 +26,24 @@
     <div class="form-group">
         <label for="district">District:</label>
         <select name="district" id="district">
-            <!-- Ваши значения районов -->
+            <option value="1">Жуковського/ХАІ</option>
+            <option value="2">Завод Малишева</option>
+            <option value="3">Салтівка / Північна Салтівка</option>
+            <option value="4">Захисників України</option>
+            <option value="5">Клочківська</option>
+            <option value="6">Москалівка</option>
+            <option value="7">Нові будинки</option>
+            <option value="8">Одеська</option>
+            <option value="9">Олексіївка</option>
+            <option value="10">Павлове поле</option>
+            <option value="11">Проспект Гагаріна</option>
+            <option value="12">Рогань / Горизонт</option>
+            <option value="13">Салтівка</option>
+            <option value="14">ХТЗ / Масельського</option>
+            <option value="15">Холодна гора</option>
+            <option value="16">Центр</option>
+            <option value="17">Нова Баварія</option>
+            <option value="18">Південий вокзал / Центральний ринок</option>
         </select>
     </div>
 
@@ -51,8 +68,8 @@
                 address: address
             }
 
-            tg.sendData(JSON.stringify(data)); // Отправляем данные в Telegram WebApp
-            tg.close();  // Закрываем WebApp
+            tg.sendData(JSON.stringify(data));
+            tg.close();
         });
     </script>
 </body>
