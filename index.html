@@ -19,12 +19,13 @@
             <label for="operation-type">Operation Type:</label>
             <select name="operation-type" id="operation-type">
                 <option value="rent">Оренда</option>
-                </select>
+                <option value="rent">Продаж</option>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="district">District:</label>
-            <select name="district">
+            <select name="district" id="district">
                 <option value="1">Жуковського/ХАІ</option>
                 <option value="2">Завод Малишева</option>
                 <option value="2">Салтівка / Північна Салтівка</option>
@@ -48,11 +49,28 @@
         </div>
 
         <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" name="address" id="address" required>   
-
+            <input type="text" name="address" id="address" required>  
         </div>
 
-        <button type="submit">Continue</button>
+        <button type="submit" id="submit">Continue</button>
+        <script>
+            let tg = window.Telegram.WebApp;
+            let submit = document.getElementById("submit");
+
+            submit.addEventListener("click", () => {
+                let operation = document.getElementById("operation-type").value;
+                let district = document.getElementById("district").value;
+                let address = document.getElementById("address").value;
+
+                let data = {
+                    operation: operation,
+                    district: district,
+                    address: address
+                }
+
+                tg.sendData(JSON.stringify(data));
+                tg.close();
+            });
+        </script>
 </body>
 </html>
