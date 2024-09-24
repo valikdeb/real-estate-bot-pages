@@ -7,60 +7,40 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-	
-	<form action="submit.php" method="post">
-        <div class="form-group">
-            <label for="city">City:</label>
-            <select name="city" id="city">
-                <option value="Kharkiv">Харків</option>
-            </select>
-        </div>
 
-        <div class="form-group">
-            <label for="operation-type">Operation Type:</label>
-            <select name="operation-type" id="operation-type">
-                <option value="rent">Оренда</option>
-                <option value="sale">Продаж</option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="city">City:</label>
+        <select name="city" id="city">
+            <option value="Kharkiv">Харків</option>
+        </select>
+    </div>
 
-        <div class="form-group">
-            <label for="district">District:</label>
-            <select name="district" id="district">
-                <option value="1">Жуковського/ХАІ</option>
-                <option value="2">Завод Малишева</option>
-                <option value="2">Салтівка / Північна Салтівка</option>
-                <option value="3">Захисників України</option>
-                <option value="4">Клочківська</option>
-                <option value="5">Москалівка</option>
-                <option value="6">Нові будинки</option>
-                <option value="7">Одеська</option>
-                <option value="8">Олексіївка</option>
-                <option value="9">Павлове поле</option>
-                <option value="10">Проспект Гагаріна</option>
-                <option value="11">Рогань / Горизонт</option>
-                <option value="12">Салтівка</option>
-                <option value="13">ХТЗ / Масельського</option>
-                <option value="14">Холодна гора</option>
-                <option value="15">Центр</option>
-                <option value="17">Нова Баварія</option>
-                <option value="18">Південий вокзал / Центральний ринок</option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="operation-type">Operation Type:</label>
+        <select name="operation-type" id="operation-type">
+            <option value="rent">Оренда</option>
+            <option value="sale">Продаж</option>
+        </select>
+    </div>
 
-        <div class="form-group">
-            <input type="text" name="address" id="address" required>  
-        </div>
+    <div class="form-group">
+        <label for="district">District:</label>
+        <select name="district" id="district">
+            <!-- Ваши значения районов -->
+        </select>
+    </div>
 
-        <button type="submit" id="submit">Continue</button>
-    </form>
+    <div class="form-group">
+        <input type="text" name="address" id="address" required>  
+    </div>
+
+    <button type="button" id="submit">Continue</button>
 
     <script>
         let tg = window.Telegram.WebApp;
         let submit = document.getElementById("submit");
 
-        submit.addEventListener("click", (event) => {
-            event.preventDefault();
+        submit.addEventListener("click", () => {
             let operation = document.getElementById("operation-type").value;
             let district = document.getElementById("district").value;
             let address = document.getElementById("address").value;
@@ -71,8 +51,8 @@
                 address: address
             }
 
-            tg.sendData(JSON.stringify(data));
-            tg.close();
+            tg.sendData(JSON.stringify(data)); // Отправляем данные в Telegram WebApp
+            tg.close();  // Закрываем WebApp
         });
     </script>
 </body>
