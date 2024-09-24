@@ -8,18 +8,19 @@
 </head>
 <body>
 	
-	<form action="submit.php" method="post"> <div class="form-group">
+	<form action="submit.php" method="post">
+        <div class="form-group">
             <label for="city">City:</label>
             <select name="city" id="city">
                 <option value="Kharkiv">Харків</option>
-                </select>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="operation-type">Operation Type:</label>
             <select name="operation-type" id="operation-type">
                 <option value="rent">Оренда</option>
-                <option value="rent">Продаж</option>
+                <option value="sale">Продаж</option>
             </select>
         </div>
 
@@ -42,7 +43,6 @@
                 <option value="13">ХТЗ / Масельського</option>
                 <option value="14">Холодна гора</option>
                 <option value="15">Центр</option>
-                <option value="16">Холодна гора</option>
                 <option value="17">Нова Баварія</option>
                 <option value="18">Південий вокзал / Центральний ринок</option>
             </select>
@@ -53,24 +53,27 @@
         </div>
 
         <button type="submit" id="submit">Continue</button>
-        <script>
-            let tg = window.Telegram.WebApp;
-            let submit = document.getElementById("submit");
+    </form>
 
-            submit.addEventListener("click", () => {
-                let operation = document.getElementById("operation-type").value;
-                let district = document.getElementById("district").value;
-                let address = document.getElementById("address").value;
+    <script>
+        let tg = window.Telegram.WebApp;
+        let submit = document.getElementById("submit");
 
-                let data = {
-                    operation: operation,
-                    district: district,
-                    address: address
-                }
+        submit.addEventListener("click", (event) => {
+            event.preventDefault();
+            let operation = document.getElementById("operation-type").value;
+            let district = document.getElementById("district").value;
+            let address = document.getElementById("address").value;
 
-                tg.sendData(JSON.stringify(data));
-                tg.close();
-            });
-        </script>
+            let data = {
+                operation: operation,
+                district: district,
+                address: address
+            }
+
+            tg.sendData(JSON.stringify(data));
+            tg.close();
+        });
+    </script>
 </body>
 </html>
